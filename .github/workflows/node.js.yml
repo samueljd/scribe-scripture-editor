@@ -1,12 +1,5 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
-
-on:
-    push:
-        branches: [development]
-
+name: Lint Check
+on: [push, pull_request_target]
 jobs:
     build:
         runs-on: ${{ matrix.os }}
@@ -140,15 +133,11 @@ jobs:
             - name: install dmg-license
               run: yarn add dmg-license
 
-            - name: set max memory allocation
-              run: export NODE_OPTIONS=–max_old_space_size=4096
+            - name: yarn install
+              run: yarn install
 
-            #             - name: Read version and commit sha
-            #               run: |
-            #                   echo "::set-env name=HASH::$(echo $GITHUB_SHA | cut -c1-7)"
-            #                   echo "::set-env name=APP_VERSION::$(node -p -e "require('./package.json').version")"
-            #             - name: Set artifact name
-            #               run: echo "::set-env name=ARTIFACT_NAME::$(echo "Autographa-mac-x64-$APP_VERSION.dmg")"
+            - name: run lint
+              run: yarn lint
 
             - name: package
               id: package

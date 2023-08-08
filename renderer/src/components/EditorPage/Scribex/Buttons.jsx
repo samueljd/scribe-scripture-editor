@@ -80,16 +80,16 @@ export default function Buttons(props) {
           onClick={onBlockable}
           title="Collapse blocks"
         />
-        )
+      )
         : (
           <Bars4Icon
             aria-label="List-Icon"
             className="h-5 mr-2 w-5 text-white cursor-pointer"
             aria-hidden="true"
             onClick={onBlockable}
-            title="Split into blocks"
+            title="Split into blocks asdfasdf"
           />
-      )}
+        )}
 
       <ArrowUturnLeftIcon
         aria-label="Undo-Icon"
